@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Handschrift';  /* Geef een naam voor het lettertype */
+    font-family: 'Handschrift'; 
     src: url('./font/handschrift.ttf') format('truetype'); /* Pad naar je TTF-bestand */
 }
 
