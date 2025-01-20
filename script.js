@@ -96,6 +96,30 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // document.querySelectorAll(".nav-container").forEach(tab => {
+    //     tab.addEventListener("click", function () {
+    //         const tabPage = this.getAttribute("data-page"); // Haal het data-page attribuut op
+    //         const targetPage = pageMapping[tabPage]; // Zoek de werkelijke pagina uit de mapping
+    //         if (targetPage) {
+    //             $("#flipbook").turn("page", targetPage); // Ga naar de juiste pagina
+    //             flipSound.currentTime = 0; // Reset het geluid naar het begin
+    //             flipSound.play(); // Speel het geluid af
+    //         }
+    //     });
+    // });
+
+    document.querySelectorAll(".nav-container, .nav-container2, .nav-container3, .nav-container4, .nav-container5, .nav-container6").forEach(container => {
+        container.addEventListener("click", function () {
+            const tabPage = this.getAttribute("data-page"); // Haal het data-page attribuut op
+            const targetPage = pageMapping[tabPage]; // Zoek de werkelijke pagina uit de mapping
+            if (targetPage) {
+                $("#flipbook").turn("page", targetPage); // Ga naar de juiste pagina
+                flipSound.currentTime = 0; // Reset het geluid naar het begin
+                flipSound.play(); // Speel het geluid af
+            }
+        });
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function () {

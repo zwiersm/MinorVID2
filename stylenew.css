@@ -1,0 +1,309 @@
+@font-face {
+    font-family: 'Handschrift'; 
+    src: url('./font/handschrift.ttf') format('truetype'); /* Pad naar je TTF-bestand */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    background-image: url('./images/backdrop.jpg'); /* Voeg je afbeeldingspad hier in */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#flipbook-container {
+    position: relative;
+    width: 90vw;  /* Breedte van het flipbook als percentage van de viewport breedte */
+    height: 90vh;  /* Hoogte van het flipbook als percentage van de viewport hoogte */
+    margin: 5vh auto;  /* Voeg een marge toe aan de bovenkant/bovenzijde en onderzijde */
+    border: navy 1em;
+    border-radius: 20px;  /* Ronde hoeken voor de kaft */
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.2);  /* Schaduw om het boek te laten lijken */
+    overflow: hidden;  /* Zorg ervoor dat de inhoud binnen de kaft blijft */
+}
+
+/* Het flipbook zelf zonder rand */
+#flipbook {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.page {
+    position: relative; /* Dit zorgt ervoor dat de child elementen goed kunnen worden gepositioneerd */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex; /* Gebruik flexbox om ruimte te verdelen */
+    justify-content: space-between; /* Plaats ze aan de zijkanten van de container */
+    align-items: center; /* Zorg dat ze gecentreerd worden op de hoogte */
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.page img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+#flipbook-container {
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+    margin: 5vh auto;
+    border: navy 1em;
+    border-radius: 20px;
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabbladen aan de zijkant */
+#tabs {
+    position: absolute;
+    right: 1.4em;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tab {
+    background-color: #1a3d7c; /* Navy-blauwe achtergrond */
+    color: white;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    writing-mode: vertical-rl; /* Tekst verticaal */
+    transform: rotate(180deg); /* Draai tekst om */
+    transition: background-color 0.3s ease;
+    display: block; /* Zorgt ervoor dat elke tab een zichtbaar blok is */
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%, 0 100%);
+    font-family: 'Handschrift', sans-serif;  /* Pas het lettertype toe */
+    font-size: 1.1em;
+}
+
+.tab[data-page="1"] {
+    background-color: #cde1ea; /* Roodachtig voor CONTACT */
+    color: black;
+}
+
+.tab[data-page="2"] {
+    background-color: #88a9b7; /* Groenachtig voor RANDALL */
+}
+
+.tab[data-page="3"] {
+    background-color: #567e8b; /* Blauwachtig voor SUNNY */
+}
+
+.tab[data-page="4"] {
+    background-color: #3f616c; /* Rozeachtig voor ROOK */
+}
+
+.tab[data-page="5"] {
+    background-color: #29424a; /* Geelachtig voor FREE */
+}
+
+.tab[data-page="6"] {
+    background-color: #1b2d33; /* Oranjeachtig voor KLADDER */
+}
+
+.tab[data-page="7"] {
+    background-color: #111f24; /* Paarsachtig voor TYPO */
+}
+
+/* Hover-effecten aanpassen */
+.tab:hover {
+    filter: brightness(1.2); /* Maak de kleur lichter bij hover */
+}
+
+/* Zorg ervoor dat computer-screen en prototype-container naast elkaar staan */
+.computer-screen,
+.prototype-container {
+    position: absolute; /* Maak ze absoluut gepositioneerd binnen de pagina */
+    width: 45%; /* Zet een breedte, zodat ze naast elkaar passen */
+    height: 100%; /* Pas de hoogte aan */
+    z-index: 10; /* Zet ze boven de andere elementen */
+}
+
+.socials-container {
+    position: absolute; /* Maak ze absoluut gepositioneerd binnen de pagina */
+    width: 45%; /* Zet een breedte, zodat ze naast elkaar passen */
+    height: 25%; /* Pas de hoogte aan */
+    z-index: 10; /* Zet ze boven de andere elementen */
+    top: 51%;
+    left: 46%;
+    cursor: pointer;
+}
+
+.kliklink {
+    position: absolute; /* Zorg ervoor dat deze op de juiste plaats staat */
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 20%;
+    display: block;
+    z-index: 20; /* Zorg dat deze boven de andere elementen staat */
+    cursor: pointer;
+}
+
+.kliklink2 {
+    position: absolute; /* Zorg ervoor dat deze op de juiste plaats staat */
+    top: 23%;
+    left: 0%;
+    width: 100%;
+    height: 20%;
+    display: block;
+    z-index: 20; /* Zorg dat deze boven de andere elementen staat */
+    cursor: pointer;
+}
+
+.kliklink3 {
+    position: absolute; /* Zorg ervoor dat deze op de juiste plaats staat */
+    top: 50%;
+    left: 0%;
+    width: 100%;
+    height: 20%;
+    display: block;
+    z-index: 20; /* Zorg dat deze boven de andere elementen staat */
+    cursor: pointer;
+}
+
+.kliklink4 {
+    position: absolute; /* Zorg ervoor dat deze op de juiste plaats staat */
+    top: 75%;
+    left: 0%;
+    width: 100%;
+    height: 20%;
+    display: block;
+    z-index: 20; /* Zorg dat deze boven de andere elementen staat */
+    cursor: pointer;
+}
+
+.nav-container {
+    position: absolute; /* Maak ze absoluut gepositioneerd binnen de pagina */
+    width: 60%; /* Zet een breedte, zodat ze naast elkaar passen */
+    height: 15%; /* Pas de hoogte aan */
+    z-index: 10; /* Laag genoeg zodat de prototype-container onder de computer-screen blijft */
+    left: 16%;
+    cursor: pointer;
+    top: 30%;
+}
+
+.nav-container2 {
+    position: absolute; /* Maak ze absoluut gepositioneerd binnen de pagina */
+    width: 60%; /* Zet een breedte, zodat ze naast elkaar passen */
+    height: 15%; /* Pas de hoogte aan */
+    z-index: 11; /* Laag genoeg zodat de prototype-container onder de computer-screen blijft */
+    left: 16%;
+    cursor: pointer;
+    top: 53%;
+}
+
+.nav-container3 {
+    position: absolute; /* Maak ze absoluut gepositioneerd binnen de pagina */
+    width: 60%; /* Zet een breedte, zodat ze naast elkaar passen */
+    height: 15%; /* Pas de hoogte aan */
+    z-index: 12; /* Laag genoeg zodat de prototype-container onder de computer-screen blijft */
+    left: 16%;
+    cursor: pointer;
+    top: 76%;
+}
+
+.nav-container4 {
+    position: absolute; /* Maak ze absoluut gepositioneerd binnen de pagina */
+    width: 70%; /* Zet een breedte, zodat ze naast elkaar passen */
+    height: 15%; /* Pas de hoogte aan */
+    z-index: 10; /* Laag genoeg zodat de prototype-container onder de computer-screen blijft */
+    left: 10%;
+    cursor: pointer;
+    top: 30%;
+}
+
+.nav-container5 {
+    position: absolute; /* Maak ze absoluut gepositioneerd binnen de pagina */
+    width: 60%; /* Zet een breedte, zodat ze naast elkaar passen */
+    height: 15%; /* Pas de hoogte aan */
+    z-index: 11; /* Laag genoeg zodat de prototype-container onder de computer-screen blijft */
+    left: 10%;
+    cursor: pointer;
+    top: 53%;
+}
+
+.nav-container6 {
+    position: absolute; /* Maak ze absoluut gepositioneerd binnen de pagina */
+    width: 60%; /* Zet een breedte, zodat ze naast elkaar passen */
+    height: 15%; /* Pas de hoogte aan */
+    z-index: 12; /* Laag genoeg zodat de prototype-container onder de computer-screen blijft */
+    left: 10%;
+    cursor: pointer;
+    top: 76%;
+}
+
+
+.computer-screen {
+    z-index: 15; /* Zorg ervoor dat de computer-screen boven de prototype-container ligt */
+    top: 8.5%; /* Pas dit aan zodat het overeenkomt met de bovenkant van het scherm */
+}
+
+.computer-screen iframe {
+    position: absolute; /* Zorg dat de iframe correct gepositioneerd is */
+    top: 0; /* Zorg dat deze vanaf de bovenkant van de container begint */
+    left: 22%; /* Zorg dat deze vanaf de linkerkant van de container begint */
+    width: 178%; /* Vul de breedte van de container */
+    height: 53.2%; /* Vul de hoogte van de container */
+    z-index: 10; /* Zorg dat de video altijd op de voorgrond staat */
+}
+
+
+.prototype-container {
+    z-index: 10; /* Laag genoeg zodat de prototype-container onder de computer-screen blijft */
+    left: 1%;
+    width: 100%;
+}
+
+/* De klikbare link moet nog steeds boven de andere elementen verschijnen */
+.clickable-link {
+    position: absolute; /* Zorg ervoor dat deze op de juiste plaats staat */
+    top: 88%;
+    left: 28%;
+    width: 40%;
+    height: 6%;
+    display: block;
+    z-index: 20; /* Zorg dat deze boven de andere elementen staat */
+    background: rgba(231, 35, 35, 0.01);
+    cursor: pointer;
+}
+
+.video-overlay {
+    position: absolute; /* Maak het absoluut ten opzichte van de .page div */
+    top: 12%; /* Plaats de video bovenaan */
+    left: 27%; /* Plaats de video aan de linkerkant */
+    width: 46%; /* Laat de video de volledige breedte van de afbeelding bedekken */
+    height: 72%; /* Laat de video de volledige hoogte van de afbeelding bedekken */
+    z-index: 10; /* Zorg ervoor dat de video bovenop de afbeelding ligt */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* Cursor verandert naar een handje om aan te geven dat het klikbaar is */
+}
+
+video {
+    width: 100%; /* Zorg ervoor dat de video de volledige breedte van de container bedekt */
+    height: 100%; /* Zorg ervoor dat de video de volledige hoogte van de container bedekt */
+    object-fit: cover; /* Zorg ervoor dat de video goed past in de container zonder vervorming */
+    z-index: 11; /* Zorg ervoor dat de video boven de overlay komt */
+}
+
+.sunny {
+    height: 100%;
+}
